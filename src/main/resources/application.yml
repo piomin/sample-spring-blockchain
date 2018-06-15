@@ -1,0 +1,4 @@
+server:
+  port: ${PORT:8090}
+web3j:
+  client-address: http://192.168.99.100:8545
