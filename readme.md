@@ -2,3 +2,6 @@ docker run -d --name ethereum -p 8545:8545 -p 30303:30303 ethereum/client-go  --
 docker exec -it ethereum geth attach ipc:/root/.ethereum/testnet/geth.ipc
 
 https://claudiodangelis.com/ethereum/2018/02/19/exploring-ethereum-platform-accounts.html
+
+
+https://github.com/matthiaszimmermann/web3j_demo/blob/master/src/main/java/org/matthiaszimmermann/web3j/util/Web3jConstants.java
