@@ -62,11 +62,15 @@ public class BlockchainService {
         EthCoinbase coinbase = web3j.ethCoinbase().send();
         EthAccounts accounts = web3j.ethAccounts().send();
         EthGetTransactionCount transactionCount = web3j.ethGetTransactionCount(coinbase.getAddress(), DefaultBlockParameterName.LATEST).send();
-        Transaction transaction = Transaction.createEtherTransaction(coinbase.getAddress(), transactionCount.getTransactionCount(), BigInteger.valueOf(3L), BigInteger.valueOf(100L), accounts.getAccounts().get(1),BigInteger.valueOf(3L));
+        Transaction transaction = Transaction.createEtherTransaction(coinbase.getAddress(), transactionCount.getTransactionCount(), BigInteger.valueOf(3L), BigInteger.valueOf(21_000), accounts.getAccounts().get(1),BigInteger.valueOf(3L));
         EthSendTransaction response = web3j.ethSendTransaction(transaction).send();
 
         String txHash = response.getTransactionHash();
         LOGGER.info("Tx hash: {}", txHash);
+        EthGetTransactionReceipt receipt = web3j.ethGetTransactionReceipt(txHash).send();
+        if (receipt.getTransactionReceipt().isPresent()) {
+            LOGGER.info("Tx receipt: {}", receipt.getTransactionReceipt().get().getCumulativeGasUsed().intValue());
+        }
     }
 
 }
