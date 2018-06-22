@@ -1,7 +1,3 @@
-docker run -d --name ethereum -p 8545:8545 -p 30303:30303 ethereum/client-go  --rpc --rpcaddr "0.0.0.0" --rpcapi="db,eth,net,web3,personal" --rpccorsdomain "*" --testnet --fast
-docker exec -it ethereum geth attach ipc:/root/.ethereum/testnet/geth.ipc
+## Introduction to Blockchain with Java using Ethereum, web3j and Spring Boot  [![Twitter](https://img.shields.io/twitter/follow/piotr_minkowski.svg?style=social&logo=twitter&label=Follow%20Me)](https://twitter.com/piotr_minkowski)
 
-https://claudiodangelis.com/ethereum/2018/02/19/exploring-ethereum-platform-accounts.html
-
-
-https://github.com/matthiaszimmermann/web3j_demo/blob/master/src/main/java/org/matthiaszimmermann/web3j/util/Web3jConstants.java
+Detailed description can be found here: [Introduction to Blockchain with Java using Ethereum, web3j and Spring Boot](https://piotrminkowski.wordpress.com/2018/06/22/introduction-to-blockchain-with-java-using-ethereum-web3j-and-spring-boot/)

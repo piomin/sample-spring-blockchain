@@ -1,3 +1,6 @@
+spring:
+  application:
+    name: transaction-service
 server:
   port: ${PORT:8090}
 web3j:
