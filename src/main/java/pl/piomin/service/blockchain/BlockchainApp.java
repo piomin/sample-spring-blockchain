@@ -33,7 +33,7 @@ public class BlockchainApp {
     @PostConstruct
     public void listen() {
 
-        web3j.transactionObservable().subscribe(tx -> {
+        web3j.transactionFlowable().subscribe(tx -> {
 
             LOGGER.info("New tx: id={}, block={}, from={}, to={}, value={}", tx.getHash(), tx.getBlockHash(), tx.getFrom(), tx.getTo(), tx.getValue().intValue());
 
