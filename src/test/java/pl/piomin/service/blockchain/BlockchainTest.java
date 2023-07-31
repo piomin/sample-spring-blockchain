@@ -5,6 +5,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.DynamicPropertySource;
 import org.testcontainers.containers.GenericContainer;
@@ -15,6 +16,7 @@ import org.web3j.crypto.Credentials;
 import org.web3j.crypto.WalletUtils;
 import org.web3j.protocol.Web3j;
 import org.web3j.protocol.core.methods.response.EthAccounts;
+import pl.piomin.service.blockchain.model.BlockchainTransaction;
 
 import java.io.IOException;
 import java.security.InvalidAlgorithmParameterException;
@@ -47,7 +49,7 @@ public class BlockchainTest {
     }
 
     @Test
-    public void test() throws CipherException, InvalidAlgorithmParameterException, NoSuchAlgorithmException, NoSuchProviderException, IOException {
+    void test() throws CipherException, InvalidAlgorithmParameterException, NoSuchAlgorithmException, NoSuchProviderException, IOException {
         LOGGER.info("Generating wallet file...");
         String file = WalletUtils.generateFullNewWalletFile("piot123", null);
         Credentials c = WalletUtils.loadCredentials("piot123", file);
@@ -56,5 +58,15 @@ public class BlockchainTest {
 
         LOGGER.info("Accounts size: ", accounts.getAccounts().size());
         accounts.getAccounts().forEach(acc -> LOGGER.info("Account", acc));
+    }
+
+    @Autowired
+    TestRestTemplate restTemplate;
+
+    @Test
+    void shouldRunTransaction() {
+        BlockchainTransaction trx = new BlockchainTransaction(1, 2, 100);
+        trx = restTemplate.postForObject("/transaction", trx, BlockchainTransaction.class);
+        LOGGER.info("Trx: {}", trx);
     }
 }

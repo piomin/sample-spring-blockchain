@@ -58,4 +58,14 @@ public class BlockchainTransaction {
         this.accepted = accepted;
     }
 
+    @Override
+    public String toString() {
+        return "BlockchainTransaction{" +
+                "id='" + id + '\'' +
+                ", fromId=" + fromId +
+                ", toId=" + toId +
+                ", value=" + value +
+                ", accepted=" + accepted +
+                '}';
+    }
 }
