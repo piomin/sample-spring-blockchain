@@ -5,3 +5,4 @@ server:
   port: ${PORT:8090}
 web3j:
   client-address: http://localhost:8545
+  admin-client: true
