@@ -1,5 +1,6 @@
 package pl.piomin.service.blockchain;
 
+import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
@@ -11,7 +12,6 @@ import org.web3j.protocol.core.methods.response.EthCoinbase;
 import org.web3j.protocol.core.methods.response.EthGetTransactionCount;
 import pl.piomin.service.blockchain.service.BlockchainService;
 
-import javax.annotation.PostConstruct;
 import java.io.IOException;
 import java.math.BigInteger;
 
