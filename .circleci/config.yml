@@ -1,4 +1,4 @@
-version: 2.1
+version: '2.1'
 
 jobs:
   analyze:
@@ -9,22 +9,37 @@ jobs:
       - run:
           name: Analyze on SonarCloud
           command: mvn verify sonar:sonar -DskipTests
-
-executors:
-  machine_executor_amd64:
-    machine:
-      image: ubuntu-2204:2022.04.2
-    environment:
-      architecture: "amd64"
-      platform: "linux/amd64"
+  test:
+    executor: machine_executor_amd64
+    steps:
+      - checkout
+      - run:
+          name: Install OpenJDK 21
+          command: |
+            java -version
+            sudo apt-get update && sudo apt-get install openjdk-21-jdk
+            sudo update-alternatives --set java /usr/lib/jvm/java-21-openjdk-amd64/bin/java
+            sudo update-alternatives --set javac /usr/lib/jvm/java-21-openjdk-amd64/bin/javac
+            java -version
+            export JAVA_HOME=/usr/lib/jvm/java-21-openjdk-amd64
+      - run:
+          name: Maven Tests
+          command: mvn test
 
 orbs:
   maven: circleci/maven@1.4.1
 
+executors:
+  machine_executor_amd64:
+    machine:
+      image: ubuntu-2204:2023.10.1
+    environment:
+      architecture: "amd64"
+      platform: "linux/amd64"
+
 workflows:
   maven_test:
     jobs:
-      - maven/test:
-          executor: machine_executor_amd64
+      - test
       - analyze:
           context: SonarCloud
