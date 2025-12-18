@@ -20,7 +20,7 @@
         <sonar.organization>piomin</sonar.organization>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
         <testcontainers.version>1.21.4</testcontainers.version>
-        <web3j.version>5.0.0</web3j.version>
+        <web3j.version>5.0.1</web3j.version>
     </properties>
 
     <dependencies>
