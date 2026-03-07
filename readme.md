@@ -7,4 +7,6 @@
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=piomin_sample-spring-blockchain&metric=coverage)](https://sonarcloud.io/dashboard?id=piomin_sample-spring-blockchain)
 [![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=piomin_sample-spring-blockchain&metric=ncloc)](https://sonarcloud.io/dashboard?id=piomin_sample-spring-blockchain)
 
+> :warning: This repository contains examples of Spring Boot, Web3j, and Ethereum, but won't be updated anymore, since I'm not actively working with Web3j right now. 
+
 Detailed description can be found here: [Introduction to Blockchain with Java using Ethereum, web3j and Spring Boot](https://piotrminkowski.com/2018/06/22/introduction-to-blockchain-with-java-using-ethereum-web3j-and-spring-boot/)
